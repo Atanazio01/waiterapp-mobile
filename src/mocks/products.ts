@@ -1,38 +1,38 @@
 export const products = [
   {
-    _id: '6372e040f52e37ef85fe2c5e',
+    _id: '6aad53bb89c9a9d108290c06',
     name: 'Pizza quatro queijos',
-    description: 'Deliciosa pizza quatro queijos com borda simples',
-    imagePath: '1668472896991-quatro-queijos.png',
+    description: 'Deliciosa pizza quatro queijos',
+    imagePath: '1789744059772-quatro-queijos.png',
     price: 40,
     ingredients: [
       {
         name: 'Mussarela',
         icon: '🧀',
-        _id: '6372e040f52e37ef85fe2c5f'
+        _id: '6aad53bb89c9a9d108290c07'
       },
       {
         name: 'Parmesão',
         icon: '🧀',
-        _id: '6372e040f52e37ef85fe2c60'
+        _id: '6aad53bb89c9a9d108290c08'
       },
       {
         name: 'Gouda',
         icon: '🧀',
-        _id: '6372e040f52e37ef85fe2c61'
+        _id: '6aad53bb89c9a9d108290c09'
       },
       {
         name: 'Brie',
         icon: '🧀',
-        _id: '6372e040f52e37ef85fe2c62'
+        _id: '6aad53bb89c9a9d108290c0a'
       }
     ],
   },
   {
-    _id: '6372e276a381106c0f854cb3',
-    name: 'Coca cola',
-    description: 'Coca cola lata geladinha topzera',
-    imagePath: '1668473462705-coca-cola.png',
+    _id: '6aad80d689c9a9d108290c2f',
+    name: 'Coca-Cola',
+    description: 'Refrigerante em lata 350 ml',
+    imagePath: '1789755606660-coca-cola.png',
     price: 7,
     ingredients: [],
   },
