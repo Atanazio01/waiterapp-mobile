@@ -1,6 +1,6 @@
 import { useFonts } from "expo-font";
-import { StatusBar } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { StatusBar } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Main } from "./src/Main";
 
 export default function App() {

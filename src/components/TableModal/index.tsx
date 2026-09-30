@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 import { Modal, Platform, TouchableOpacity } from "react-native";
 import { Button } from "../Button";
 import { Close } from "../Icons/Close";
@@ -21,7 +21,11 @@ export function TableModal({ visible, onClose, onSave }: TableModalProps) {
   }
 
   return (
-    <Modal transparent visible={visible} animationType="fade">
+    <Modal
+      transparent
+      visible={visible}
+      animationType="fade"
+    >
       <Overlay behavior={Platform.OS === "android" ? "height" : "padding"}>
         <ModalBody>
           <Header>
@@ -37,7 +41,12 @@ export function TableModal({ visible, onClose, onSave }: TableModalProps) {
               keyboardType="number-pad"
               onChangeText={setTableNumber}
             />
-            <Button onPress={handleSave} disabled={tableNumber.length === 0}>Salvar</Button>
+            <Button
+              onPress={handleSave}
+              disabled={tableNumber.length === 0}
+            >
+              Salvar
+            </Button>
           </Form>
         </ModalBody>
       </Overlay>
