@@ -1,22 +1,19 @@
-import { useState } from 'react';
+import { useState } from "react";
 import { FlatList } from "react-native";
-import { products } from "../../mocks/products";
-import { Product } from '../../types/Product';
-import { API_URL } from '../../utils/apiUrl';
+import { Product } from "../../types/Product";
+import { API_URL } from "../../utils/apiUrl";
 import { formatCurrency } from "../../utils/formatCurrency";
 import { PlusCircle } from "../Icons/PlusCircle";
-import { ProductModal } from '../ProductModal';
+import { ProductModal } from "../ProductModal";
 import { Text } from "../Text";
-import {
-  AddToCartButton,
-  ProductCard,
-  ProductDetails,
-  ProductImage,
-  Separator,
-} from "./styles";
+import { AddToCartButton, ProductCard, ProductDetails, ProductImage, Separator } from "./styles";
 
+interface MenuProps {
+  onAddToCart: (product: Product) => void;
+  products: Product[];
+}
 
-export function Menu() {
+export function Menu({ onAddToCart, products }: MenuProps) {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
@@ -35,26 +32,35 @@ export function Menu() {
         ItemSeparatorComponent={() => <Separator />}
         renderItem={({ item: product }) => (
           <ProductCard onPress={() => handleOpenModal(product)}>
-            <ProductImage
-              source={{ uri: `${API_URL}/uploads/${product.imagePath}` }}
-            />
+            <ProductImage source={{ uri: `${API_URL}/uploads/${product.imagePath}` }} />
             <ProductDetails>
               <Text weight="600">{product.name}</Text>
-              <Text size={14} style={{ marginVertical: 8 }}>
+              <Text
+                size={14}
+                style={{ marginVertical: 8 }}
+              >
                 {product.description}
               </Text>
-              <Text weight="600" size={14}>
+              <Text
+                weight="600"
+                size={14}
+              >
                 {formatCurrency(product.price)}
               </Text>
             </ProductDetails>
 
-            <AddToCartButton>
+            <AddToCartButton onPress={() => onAddToCart(product)}>
               <PlusCircle />
             </AddToCartButton>
           </ProductCard>
         )}
       />
-      <ProductModal visible={isModalVisible} onClose={() => setIsModalVisible(false)} product={selectedProduct}/>
+      <ProductModal
+        onAddToCart={onAddToCart}
+        visible={isModalVisible}
+        onClose={() => setIsModalVisible(false)}
+        product={selectedProduct}
+      />
     </>
   );
 }

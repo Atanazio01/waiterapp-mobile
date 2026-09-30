@@ -22,10 +22,16 @@ interface ProductModalProps {
   visible: boolean;
   onClose: () => void;
   product: Product | null;
+  onAddToCart: (product: Product) => void;
 }
 
-export function ProductModal({ visible, onClose, product }: ProductModalProps) {
+export function ProductModal({ visible, onClose, product, onAddToCart }: ProductModalProps) {
   if (!product) return null;
+
+  function handleAddToCart() {
+    onAddToCart(product!);
+    onClose();
+  }
 
   return (
     <Modal
@@ -41,17 +47,26 @@ export function ProductModal({ visible, onClose, product }: ProductModalProps) {
       </Image>
       <ModalBody>
         <Header>
-          <Text size={24} weight="600">
+          <Text
+            size={24}
+            weight="600"
+          >
             {product.name}
           </Text>
-          <Text color="#666" style={{ marginTop: 8 }}>
+          <Text
+            color="#666"
+            style={{ marginTop: 8 }}
+          >
             {product.description}
           </Text>
         </Header>
 
         {product.ingredients.length > 0 && (
           <IngredientsContainer>
-            <Text weight="600" color="#666">
+            <Text
+              weight="600"
+              color="#666"
+            >
               Ingredientes
             </Text>
 
@@ -63,7 +78,11 @@ export function ProductModal({ visible, onClose, product }: ProductModalProps) {
               renderItem={({ item: ingredient }) => (
                 <Ingredient>
                   <Text>{ingredient.icon}</Text>
-                  <Text size={14} color="#666" style={{ marginLeft: 8 }}>
+                  <Text
+                    size={14}
+                    color="#666"
+                    style={{ marginLeft: 8 }}
+                  >
                     {ingredient.name}
                   </Text>
                 </Ingredient>
@@ -77,13 +96,19 @@ export function ProductModal({ visible, onClose, product }: ProductModalProps) {
         <FooterContainer>
           <PriceContainer>
             <Text color="#666">Preço</Text>
-            <Text size={20} weight="600">
+            <Text
+              size={20}
+              weight="600"
+            >
               {formatCurrency(product.price)}
             </Text>
           </PriceContainer>
 
-          <Button onPress={() => alert("TODO: Adicionar ao pedido")}>
-            <Text weight="600" color="#fff">
+          <Button onPress={handleAddToCart}>
+            <Text
+              weight="600"
+              color="#fff"
+            >
               Adicionar ao pedido
             </Text>
           </Button>
